@@ -7,6 +7,7 @@
 <title>オーアンドケー研修 プロンプト集</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=BIZ+UDGothic:wght@400&display=swap">
+<script>document.documentElement.className+=' js'</script>
 <style>
 *{box-sizing:border-box}
 /* 研修テキストの続きとして読む一列のノート。朱は番号とボタンだけ */
@@ -23,8 +24,6 @@ header p{margin:0;color:var(--sub);font-size:.92rem}
 .kicker{color:var(--acc);font-weight:700;font-size:.8rem;letter-spacing:.06em}
 .howto{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:14px 16px;font-size:.92rem}
 .howto ol{margin:6px 0 0;padding-left:1.3em}
-.jump{display:flex;flex-wrap:wrap;gap:6px}
-.jump a{min-width:2.4em;text-align:center;padding:4px 0;border:1px solid var(--line);border-radius:6px;color:var(--fg);text-decoration:none;font-variant-numeric:tabular-nums;background:var(--paper)}
 section{display:flex;flex-direction:column;gap:14px}
 h2{font-size:1.15rem;margin:8px 0 0;display:flex;flex-direction:column;gap:2px;border-bottom:1px solid var(--line);padding-bottom:8px}
 .eyebrow{font-size:.78rem;color:var(--acc);letter-spacing:.06em}
@@ -46,9 +45,27 @@ details summary{cursor:pointer;color:var(--sub);font-size:.9rem}
 .dl{display:inline-block;text-align:center;border:1.5px solid var(--acc);border-radius:8px;padding:10px;color:var(--acc);font-weight:700;text-decoration:none}
 .note{margin:0;color:var(--sub);font-size:.78rem}
 footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding-top:12px}
+
+html{scroll-padding-top:var(--navh,112px)}
+.jump{position:sticky;top:0;z-index:20;margin-inline:-16px;padding:8px 16px;background:var(--bg);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.tabs a{display:block;text-align:center;padding:6px 2px;border:1.5px solid var(--line);border-radius:8px;color:var(--fg);text-decoration:none;font-weight:700;font-size:.9rem;background:var(--paper);white-space:nowrap}
+.tabs a.on{border-color:var(--acc);color:var(--acc)}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;padding-bottom:3px;-webkit-overflow-scrolling:touch}
+.chips .grp{display:contents}
+.js .chips .grp.off{display:none}
+.chips a{flex:0 0 auto;min-width:2.6em;text-align:center;padding:4px 8px;border:1px solid var(--line);border-radius:6px;color:var(--fg);text-decoration:none;font-variant-numeric:tabular-nums;background:var(--paper);font-size:.92rem;white-space:nowrap}
+.chips a.on{border-color:var(--acc);color:var(--acc);font-weight:700;box-shadow:inset 0 -2px 0 var(--acc)}
+.tabs a:focus-visible,.chips a:focus-visible,.rel a:focus-visible,.totop:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.card,section{scroll-margin-top:0}
+.rel{margin:0;font-size:.88rem;color:var(--sub);display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center}
+.rel a{color:var(--acc);text-decoration:none;border-bottom:1px solid currentColor;padding:2px 0}
+.totop{position:fixed;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:21;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--acc);border-radius:50%;background:var(--paper);color:var(--acc);font:700 1rem var(--f-body);padding:0;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.12);opacity:0;pointer-events:none;transition:opacity .2s}
+.totop.show{opacity:1;pointer-events:auto}
+@media (prefers-reduced-motion: reduce){.totop{transition:none}}
 </style>
 </head>
-<body>
+<body id="top">
 <div class="wrap">
 <header>
   <div class="kicker">2026年10月15日・16日　営業部向け 生成AI初級活用研修</div>
@@ -56,10 +73,13 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
   <p>テキストとスライドの「プロンプト No.」と同じ番号です。</p>
 </header>
 <div class="howto"><strong>使い方</strong>
-  <ol><li>番号のボタンで、使うプロンプトへ移動</li><li>「コピーする」を押す（「書き起こしもつけてコピー」を押すと、書き起こしを貼り付けた状態でコピーできます）</li><li>Claude に貼り付けて送る</li><li>（　）の部分は、自分の内容に書き換える</li></ol>
+  <ol><li>画面の上の「Day1・Day2・書き起こし・ひな形」で切り替え、番号のボタンで移動します（ボタンはスクロールしても上に残ります）</li><li>「コピーする」を押す（「書き起こしもつけてコピー」を押すと、書き起こしを貼り付けた状態でコピーできます）</li><li>Claude に貼り付けて送る</li><li>（　）の部分は、自分の内容に書き換える</li></ol>
 </div>
-<nav class="jump" aria-label="プロンプト番号"><a href="#p1">1</a><a href="#p2">2</a><a href="#p3">3</a><a href="#p4">4</a><a href="#p5">5</a><a href="#p6">6</a><a href="#p7">7</a><a href="#p8">8</a><a href="#p9">9</a><a href="#p10">10</a><a href="#p11">11</a><a href="#p11-2">11-2</a><a href="#p12">12</a><a href="#p13">13</a><a href="#p13-2">13-2</a><a href="#p14">14</a><a href="#p15">15</a><a href="#p15-2">15-2</a><a href="#p15-3">15-3</a><a href="#p16">16</a><a href="#p16-2">16-2</a><a href="#p17">17</a><a href="#p17-2">17-2</a><a href="#p17-3">17-3</a><a href="#p17-4">17-4</a><a href="#p18">18</a><a href="#p19">19</a><a href="#tr">書き起こし</a><a href="#sk">ひな形</a></nav>
-<section><h2><span class="eyebrow">Day1</span>1コマ目</h2>
+<nav class="jump" id="jump" aria-label="ページ内の移動">
+<div class="tabs"><a href="#day1" data-g="g1">Day1</a><a href="#day2" data-g="g2">Day2</a><a href="#tr" data-g="g3">書き起こし</a><a href="#sk" data-g="g4">ひな形</a></div>
+<div class="chips" id="chips"><div class="grp" id="g1"><a href="#p1">1</a><a href="#p2">2</a><a href="#p3">3</a><a href="#p4">4</a><a href="#p5">5</a><a href="#p6">6</a><a href="#p7">7</a><a href="#p8">8</a><a href="#p9">9</a><a href="#p10">10</a><a href="#p11">11</a><a href="#p11-2">11-2</a><a href="#p12">12</a></div><div class="grp" id="g2"><a href="#p13">13</a><a href="#p13-2">13-2</a><a href="#p14">14</a><a href="#p15">15</a><a href="#p15-2">15-2</a><a href="#p15-3">15-3</a><a href="#p16">16</a><a href="#p16-2">16-2</a><a href="#p17">17</a><a href="#p17-2">17-2</a><a href="#p17-3">17-3</a><a href="#p17-4">17-4</a><a href="#p18">18</a><a href="#p19">19</a></div><div class="grp" id="g3"><a href="#trA">A</a><a href="#trB">B</a><a href="#trC">C</a><a href="#trD">D</a><a href="#trE">E</a><a href="#trF">F</a></div><div class="grp" id="g4"><a href="#skA">ひな形A</a><a href="#skB">ひな形B</a></div></div>
+</nav>
+<section id="day1"><h2><span class="eyebrow">Day1</span>1コマ目</h2>
 <article class="card" id="p1">
   <div class="head"><span class="no">No.1</span><a class="tool" href="https://claude.ai/new" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
   <h3>個人情報を伏せた版を作る（演習1-2）</h3>
@@ -124,6 +144,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 [00:01:55] 話者1：分かりました。結果は1週間以内にお電話でご連絡します。
 [00:02:00] 話者2：よろしくお願いします。</pre>
   <button type="button" class="copy sub" data-target="f1">書き起こしDもつけてコピー</button>
+  <p class="rel">使うデータ：<a href="#trD">書き起こしDの全文を見る</a></p>
 </article>
 <article class="card" id="p2">
   <div class="head"><span class="no">No.2</span><a class="tool" href="https://claude.ai/new" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
@@ -235,6 +256,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 [00:05:55] 話者2：そこの評判は聞いてます。期待してますよ。
 [00:05:59] 話者1：ありがとうございます。がんばります。</pre>
   <button type="button" class="copy sub" data-target="f4">書き起こしAもつけてコピー</button>
+  <p class="rel">使うデータ：<a href="#trA">書き起こしAの全文を見る</a></p>
 </article>
 <article class="card" id="p5">
   <div class="head"><span class="no">No.5</span><a class="tool" href="https://claude.ai/new" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
@@ -315,6 +337,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 [00:05:55] 話者2：そこの評判は聞いてます。期待してますよ。
 [00:05:59] 話者1：ありがとうございます。がんばります。</pre>
   <button type="button" class="copy sub" data-target="f5">書き起こしAもつけてコピー</button>
+  <p class="rel">使うデータ：<a href="#trA">書き起こしAの全文を見る</a></p>
 </article>
 <article class="card" id="p6">
   <div class="head"><span class="no">No.6</span><a class="tool" href="https://claude.ai/new" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
@@ -374,6 +397,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 
 おはようございます。オーアンドケーの木村です。お忙しいところすみません。ああ、どうも。座って。あ、ちょっと待って、それ録音してるの？はい、打ち合わせの内容を正確に残すために録らせていただいています。うーん、そういうの、あんまり好きじゃないんだよね。何に使うのか分からないし。そうですよね、失礼しました。録音は、佐々木様とのお約束を聞き漏らさないためだけに使っていて、ほかの方に聞かせたり、外に出したりすることはありません。内容をまとめた議事録を後でお送りしますので、言った言わないにならないようにするためのものです。もし気になるようでしたら止めます。……まあ、議事録をくれるならいいよ。ありがとうございます。じゃあ本題なんだけど、この前電話で言ったとおり、入居者さんから苦情が来てるんだよ。はい。3つあって、まずエントランスのガラス。手の跡がずっと残ってる。週2回来てもらってるんだよね？はい、火曜と金曜の週2回です。その割に汚いって言われてさ。申し訳ありません。2つ目がゴミ置き場の臭い。夏場ほどじゃないけど、まだ臭うって。3つ目が、清掃の人が挨拶しないって。これが一番言われる。……申し訳ございません。挨拶の件は、担当スタッフに確認して、すぐに指導します。ガラスは、拭き方を見直します。ゴミ置き場は、床の洗浄を月1回追加することもできますが、費用がかかりますので、ご提案という形でお持ちしてもいいですか。うん、いくらかかるか見せて。いつまでにもらえる？来週の金曜、10月16日までにお持ちします。改善の内容と、ゴミ置き場の洗浄を追加した場合の金額を一緒にお出しします。分かった。それとさ、清掃が終わったら写真を送ってくれない？ちゃんとやってるか分からないんだよ。写真の報告ですね。毎回、作業後にエントランスとゴミ置き場の写真をお送りする形でいかがでしょう。それでいい。メールでいいから。承知しました。あと、これは清掃じゃないんだけど、廊下の電気を全部LEDに替えたいと思ってて。そういうのはやってないの？照明の交換は、うちでは直接やっていないんですが、付き合いのある電気工事の会社をご紹介することはできます。じゃあそれも今度聞かせて。はい、次回お持ちします。いや、うちも大変でさ、家内が先月から入院してて、ここの管理も全部俺一人でやってるんだよ。それは大変ですね……。だから、ちゃんとやってくれる業者さんがいいんだよ。頼むよ。はい、しっかりやらせていただきます。今日の内容は、本日中にメールでお送りします。うん、よろしく。ありがとうございました。</pre>
   <button type="button" class="copy sub" data-target="f7">書き起こしBもつけてコピー</button>
+  <p class="rel">使うデータ：<a href="#trB">書き起こしBの全文を見る</a></p>
 </article>
 </section>
 <section><h2><span class="eyebrow">Day1</span>3コマ目</h2>
@@ -462,6 +486,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 [00:05:55] 話者2：そこの評判は聞いてます。期待してますよ。
 [00:05:59] 話者1：ありがとうございます。がんばります。</pre>
   <button type="button" class="copy sub" data-target="f8">書き起こしAもつけてコピー</button>
+  <p class="rel">使うデータ：<a href="#trA">書き起こしAの全文を見る</a></p>
 </article>
 <article class="card" id="p9">
   <div class="head"><span class="no">No.9</span><a class="tool" href="https://claude.ai/new" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
@@ -560,6 +585,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 [02:31:00] （片付けの音）
 [02:42:10] 話者1：では失礼します。何かあればご連絡ください。</pre>
   <button type="button" class="copy sub" data-target="f10">書き起こしCもつけてコピー</button>
+  <p class="rel">使うデータ：<a href="#trC">書き起こしCの全文を見る</a></p>
 </article>
 <article class="card" id="p11">
   <div class="head"><span class="no">No.11</span><a class="tool" href="https://claude.ai/new" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
@@ -626,6 +652,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 【17:40 事務所到着】
 お疲れさまでした。お疲れさま。</pre>
   <button type="button" class="copy sub" data-target="f11">書き起こしEもつけてコピー</button>
+  <p class="rel">使うデータ：<a href="#trE">書き起こしEの全文を見る</a></p>
 </article>
 <article class="card" id="p11-2">
   <div class="head"><span class="no">No.11-2</span><a class="tool" href="https://claude.ai/new" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
@@ -704,6 +731,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 [00:05:55] 話者2：そこの評判は聞いてます。期待してますよ。
 [00:05:59] 話者1：ありがとうございます。がんばります。</pre>
   <button type="button" class="copy sub" data-target="f11-2">書き起こしAもつけてコピー</button>
+  <p class="rel">使うデータ：<a href="#trA">書き起こしAの全文を見る</a></p>
 </article>
 </section>
 <section><h2><span class="eyebrow">Day1</span>実践演習</h2>
@@ -726,7 +754,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
   <button type="button" class="copy" data-target="t12">コピーする</button>
 </article>
 </section>
-<section><h2><span class="eyebrow">Day2</span>1コマ目</h2>
+<section id="day2"><h2><span class="eyebrow">Day2</span>1コマ目</h2>
 <article class="card" id="p13">
   <div class="head"><span class="no">No.13</span><a class="tool" href="https://claude.ai/new" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
   <h3>提案書の構成案を作る（演習1-1）</h3>
@@ -802,6 +830,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 [00:05:55] 話者2：そこの評判は聞いてます。期待してますよ。
 [00:05:59] 話者1：ありがとうございます。がんばります。</pre>
   <button type="button" class="copy sub" data-target="f13">書き起こしAもつけてコピー</button>
+  <p class="rel">使うデータ：<a href="#trA">書き起こしAの全文を見る</a></p>
 </article>
 <article class="card" id="p13-2">
   <div class="head"><span class="no">No.13-2</span><a class="tool" href="https://claude.ai/new" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
@@ -927,6 +956,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 [00:05:55] 話者2：そこの評判は聞いてます。期待してますよ。
 [00:05:59] 話者1：ありがとうございます。がんばります。</pre>
   <button type="button" class="copy sub" data-target="f15-2">書き起こしAもつけてコピー</button>
+  <p class="rel">使うデータ：<a href="#trA">書き起こしAの全文を見る</a></p>
 </article>
 <article class="card" id="p15-3">
   <div class="head"><span class="no">No.15-3</span><a class="tool" href="https://claude.ai/new" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
@@ -991,6 +1021,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 [02:31:00] （片付けの音）
 [02:42:10] 話者1：では失礼します。何かあればご連絡ください。</pre>
   <button type="button" class="copy sub" data-target="f16">書き起こしCもつけてコピー</button>
+  <p class="rel">使うデータ：<a href="#trC">書き起こしCの全文を見る</a></p>
 </article>
 <article class="card" id="p16-2">
   <div class="head"><span class="no">No.16-2</span><a class="tool" href="https://claude.ai/new" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
@@ -1067,6 +1098,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 [00:05:55] 話者2：そこの評判は聞いてます。期待してますよ。
 [00:05:59] 話者1：ありがとうございます。がんばります。</pre>
   <button type="button" class="copy sub" data-target="f17">書き起こしAもつけてコピー</button>
+  <p class="rel">使うデータ：<a href="#trA">書き起こしAの全文を見る</a></p>
 </article>
 <article class="card" id="p17-2">
   <div class="head"><span class="no">No.17-2</span><a class="tool" href="https://claude.ai/new" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
@@ -1188,6 +1220,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 内容：
 搬送ローラーの異音の件で訪問。ベアリング1個を交換して異音は解消。部品代と作業時間を記録。請求先を聞きそびれたので要確認。総務課長から、ほかのラインも年に1回くらい点検してほしいと言われた。</pre>
   <button type="button" class="copy sub" data-target="f17-3">週報セット（F）もつけてコピー</button>
+  <p class="rel">使うデータ：<a href="#trF">週報セット（F）の全文を見る</a></p>
 </article>
 <article class="card" id="p17-4">
   <div class="head"><span class="no">No.17-4</span><a class="tool" href="https://claude.ai/new" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
@@ -1314,6 +1347,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 内容：
 搬送ローラーの異音の件で訪問。ベアリング1個を交換して異音は解消。部品代と作業時間を記録。請求先を聞きそびれたので要確認。総務課長から、ほかのラインも年に1回くらい点検してほしいと言われた。</pre>
   <button type="button" class="copy sub" data-target="f19">週報セット（F）もつけてコピー</button>
+  <p class="rel">使うデータ：<a href="#trF">週報セット（F）の全文を見る</a></p>
 </article>
 </section>
 <section id="tr"><h2><span class="eyebrow">演習キット</span>書き起こしA〜Eと週報セットF（すべて架空のデータ）</h2>
@@ -1365,14 +1399,14 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 [00:05:52] 話者1：はい、いくつか担当させていただいています。
 [00:05:55] 話者2：そこの評判は聞いてます。期待してますよ。
 [00:05:59] 話者1：ありがとうございます。がんばります。</pre></details>
-<button type="button" class="copy" data-target="xA">全文をコピーする</button></article>
+<button type="button" class="copy" data-target="xA">全文をコピーする</button><p class="rel">このデータを使うプロンプト：<a href="#p4">No.4</a><a href="#p5">No.5</a><a href="#p8">No.8</a><a href="#p11-2">No.11-2</a><a href="#p13">No.13</a><a href="#p15-2">No.15-2</a><a href="#p17">No.17</a></p></article>
 <article class="card" id="trB"><div class="head"><span class="no">書き起こしB</span></div><h3>マンションオーナーとの打ち合わせ</h3>
 <details><summary>全文を表示する</summary><pre id="xB">※演習用の架空データです。登場する会社・建物・人物はすべて架空で、実在のものとは関係ありません。
 録音：2026年10月6日（火）10:30〜10:40　場所：グランパレス緑町（架空）1階 集会室
 ※スマートフォンの録音アプリで自動書き起こし。話者の区別なし。
 
 おはようございます。オーアンドケーの木村です。お忙しいところすみません。ああ、どうも。座って。あ、ちょっと待って、それ録音してるの？はい、打ち合わせの内容を正確に残すために録らせていただいています。うーん、そういうの、あんまり好きじゃないんだよね。何に使うのか分からないし。そうですよね、失礼しました。録音は、佐々木様とのお約束を聞き漏らさないためだけに使っていて、ほかの方に聞かせたり、外に出したりすることはありません。内容をまとめた議事録を後でお送りしますので、言った言わないにならないようにするためのものです。もし気になるようでしたら止めます。……まあ、議事録をくれるならいいよ。ありがとうございます。じゃあ本題なんだけど、この前電話で言ったとおり、入居者さんから苦情が来てるんだよ。はい。3つあって、まずエントランスのガラス。手の跡がずっと残ってる。週2回来てもらってるんだよね？はい、火曜と金曜の週2回です。その割に汚いって言われてさ。申し訳ありません。2つ目がゴミ置き場の臭い。夏場ほどじゃないけど、まだ臭うって。3つ目が、清掃の人が挨拶しないって。これが一番言われる。……申し訳ございません。挨拶の件は、担当スタッフに確認して、すぐに指導します。ガラスは、拭き方を見直します。ゴミ置き場は、床の洗浄を月1回追加することもできますが、費用がかかりますので、ご提案という形でお持ちしてもいいですか。うん、いくらかかるか見せて。いつまでにもらえる？来週の金曜、10月16日までにお持ちします。改善の内容と、ゴミ置き場の洗浄を追加した場合の金額を一緒にお出しします。分かった。それとさ、清掃が終わったら写真を送ってくれない？ちゃんとやってるか分からないんだよ。写真の報告ですね。毎回、作業後にエントランスとゴミ置き場の写真をお送りする形でいかがでしょう。それでいい。メールでいいから。承知しました。あと、これは清掃じゃないんだけど、廊下の電気を全部LEDに替えたいと思ってて。そういうのはやってないの？照明の交換は、うちでは直接やっていないんですが、付き合いのある電気工事の会社をご紹介することはできます。じゃあそれも今度聞かせて。はい、次回お持ちします。いや、うちも大変でさ、家内が先月から入院してて、ここの管理も全部俺一人でやってるんだよ。それは大変ですね……。だから、ちゃんとやってくれる業者さんがいいんだよ。頼むよ。はい、しっかりやらせていただきます。今日の内容は、本日中にメールでお送りします。うん、よろしく。ありがとうございました。</pre></details>
-<button type="button" class="copy" data-target="xB">全文をコピーする</button></article>
+<button type="button" class="copy" data-target="xB">全文をコピーする</button><p class="rel">このデータを使うプロンプト：<a href="#p7">No.7</a></p></article>
 <article class="card" id="trC"><div class="head"><span class="no">書き起こしC</span></div><h3>工場での機械修理</h3>
 <details><summary>全文を表示する</summary><pre id="xC">※演習用の架空データです。登場する会社・人物はすべて架空で、実在のものとは関係ありません。
 録音：2026年10月5日（月）9:10〜11:52　場所：みなと精機（架空）第二工場 組立ライン
@@ -1412,7 +1446,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 [02:30:47] 話者1：承知しました。本社経理宛てで出します。
 [02:31:00] （片付けの音）
 [02:42:10] 話者1：では失礼します。何かあればご連絡ください。</pre></details>
-<button type="button" class="copy" data-target="xC">全文をコピーする</button></article>
+<button type="button" class="copy" data-target="xC">全文をコピーする</button><p class="rel">このデータを使うプロンプト：<a href="#p10">No.10</a><a href="#p16">No.16</a></p></article>
 <article class="card" id="trD"><div class="head"><span class="no">書き起こしD</span></div><h3>パート採用面談</h3>
 <details><summary>全文を表示する</summary><pre id="xD">※演習用の架空データです。登場する人物・住所・電話番号はすべて架空で、実在のものとは関係ありません。
 ※このデータには個人情報（健康状態・家族の事情・住所・電話番号など）が含まれる想定です。個人情報を伏せる演習に使います。
@@ -1440,7 +1474,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 [00:01:51] 話者2：10月20日からなら大丈夫です。
 [00:01:55] 話者1：分かりました。結果は1週間以内にお電話でご連絡します。
 [00:02:00] 話者2：よろしくお願いします。</pre></details>
-<button type="button" class="copy" data-target="xD">全文をコピーする</button></article>
+<button type="button" class="copy" data-target="xD">全文をコピーする</button><p class="rel">このデータを使うプロンプト：<a href="#p1">No.1</a></p></article>
 <article class="card" id="trE"><div class="head"><span class="no">書き起こしE</span></div><h3>一日つけっぱなしの録音（短縮版）</h3>
 <details><summary>全文を表示する</summary><pre id="xE">※演習用の架空データです。登場する会社・施設・人物はすべて架空で、実在のものとは関係ありません。
 録音：2026年10月8日（木）8:05〜17:40　録音機を一日中つけたままにした記録（演習用に約6分の1に短縮）
@@ -1481,7 +1515,7 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 
 【17:40 事務所到着】
 お疲れさまでした。お疲れさま。</pre></details>
-<button type="button" class="copy" data-target="xE">全文をコピーする</button></article>
+<button type="button" class="copy" data-target="xE">全文をコピーする</button><p class="rel">このデータを使うプロンプト：<a href="#p11">No.11</a></p></article>
 <article class="card" id="trF"><div class="head"><span class="no">週報セット</span></div><h3>1週間分の日報（週報セット）</h3>
 <details><summary>全文を表示する</summary><pre id="xF">※演習用の架空データです。登場する会社・施設・人物はすべて架空で、実在のものとは関係ありません。
 2026年10月5日（月）〜10月9日（金）にビズリブへ入力された業務報告（日報）11件という想定です。
@@ -1552,10 +1586,10 @@ footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding
 顧客：北山化成 本社工場　営業カテゴリ：施工作業　営業フラグ：off　時間：2.0時間
 内容：
 搬送ローラーの異音の件で訪問。ベアリング1個を交換して異音は解消。部品代と作業時間を記録。請求先を聞きそびれたので要確認。総務課長から、ほかのラインも年に1回くらい点検してほしいと言われた。</pre></details>
-<button type="button" class="copy" data-target="xF">全文をコピーする</button></article>
+<button type="button" class="copy" data-target="xF">全文をコピーする</button><p class="rel">このデータを使うプロンプト：<a href="#p17-3">No.17-3</a><a href="#p19">No.19</a></p></article>
 </section>
 <section id="sk"><h2><span class="eyebrow">Day2で使う</span>手順書（スキル）のひな形</h2>
-<article class="card"><div class="head"><span class="no">ひな形A</span></div><h3>ひな形A　営業日報（2コマ目）</h3>
+<article class="card" id="skA"><div class="head"><span class="no">ひな形A</span></div><h3>ひな形A　営業日報（2コマ目）</h3>
 <a class="dl" href="downloads/eigyo-nippo-renshu.zip" download>ZIPファイルをダウンロード</a>
 <details><summary>SKILL.md の中身を表示する</summary><pre id="keigyo-nippo-renshu">---
 name: eigyo-nippo-renshu
@@ -1605,8 +1639,9 @@ description: 商談や作業の書き起こしから、オーアンドケーの�
 
 ## 5. 出力の形
 ビズリブに写しやすいように、「項目名：内容」の形で上から順に並べる。最初の行に「今日のひとこと要約」を1行で書く。</pre></details>
-<button type="button" class="copy sub" data-target="keigyo-nippo-renshu">SKILL.md の中身をコピーする</button></article>
-<article class="card"><div class="head"><span class="no">ひな形B</span></div><h3>ひな形B　商談採点（3コマ目）</h3>
+<button type="button" class="copy sub" data-target="keigyo-nippo-renshu">SKILL.md の中身をコピーする</button>
+<p class="rel">登録したあとに使うプロンプト：<a href="#p16">No.16</a><a href="#p16-2">No.16-2</a></p></article>
+<article class="card" id="skB"><div class="head"><span class="no">ひな形B</span></div><h3>ひな形B　商談採点（3コマ目）</h3>
 <a class="dl" href="downloads/shodan-saiten-renshu.zip" download>ZIPファイルをダウンロード</a>
 <details><summary>SKILL.md の中身を表示する</summary><pre id="kshodan-saiten-renshu">---
 name: shodan-saiten-renshu
@@ -1654,19 +1689,64 @@ description: 商談の書き起こしや商談の記録を、決めた10の観�
 - 結果は1行1件の表にする：No.／日付／担当者／観点1〜10の点数／合計／次に直す点
 - 担当者ごとの平均や順位はつけない（集計は人がExcelで行う）
 - 採点の対象外の件は、表に「対象外」と理由を書く</pre></details>
-<button type="button" class="copy sub" data-target="kshodan-saiten-renshu">SKILL.md の中身をコピーする</button></article>
+<button type="button" class="copy sub" data-target="kshodan-saiten-renshu">SKILL.md の中身をコピーする</button>
+<p class="rel">登録したあとに使うプロンプト：<a href="#p17">No.17</a><a href="#p17-2">No.17-2</a></p></article>
 <p class="note">ZIPを展開し、SKILL.md を書き換えたら、フォルダごとZIPにして「カスタマイズ」→「スキル」からアップロードします（テキストDay2 2コマ目）。</p></section>
 <footer>題材はすべて架空のデータです。実在のお客様の個人の情報は、AIに入れる前に自分で伏せてください。<br>がだんだん株式会社</footer>
 </div>
+<a class="totop" id="totop" href="#top" aria-label="ページのいちばん上へ" title="いちばん上へ">▲</a>
 <script>
-document.querySelectorAll('.copy').forEach(function(b){
-  b.addEventListener('click',function(){
-    var el=document.getElementById(b.dataset.target), text=el.textContent;
-    function ok(){b.textContent='コピーしました';b.classList.add('done');setTimeout(function(){b.textContent='コピーする';b.classList.remove('done')},2000)}
-    function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r);b.textContent='選択しました。長押しでコピー'}
-    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok,fallback)}else{fallback()}
+(function(){
+  /* コピー（押したボタンの元の文言に戻す） */
+  document.querySelectorAll('.copy').forEach(function(b){
+    var label=b.textContent;
+    b.addEventListener('click',function(){
+      var el=document.getElementById(b.dataset.target), text=el.textContent;
+      function ok(){b.textContent='コピーしました';b.classList.add('done');setTimeout(function(){b.textContent=label;b.classList.remove('done')},2000)}
+      function fallback(){if(el.hidden){el.hidden=false}var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r);b.textContent='選択しました。長押しでコピー'}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok,fallback)}else{fallback()}
+    });
   });
-});
+
+  /* 上に残るナビ */
+  var nav=document.getElementById('jump'), chips=document.getElementById('chips'), totop=document.getElementById('totop');
+  var tabs=[].slice.call(nav.querySelectorAll('.tabs a')), grps=[].slice.call(chips.querySelectorAll('.grp'));
+  var root=document.documentElement, navh=112;
+  function setH(){navh=nav.offsetHeight+10;root.style.setProperty('--navh',navh+'px')}
+  setH();window.addEventListener('resize',function(){setH();tick()});
+
+  /* 見張る対象：各区切りの見出し（グループだけ）と各カード（番号ボタンも） */
+  var marks=[];
+  tabs.forEach(function(t){var s=document.querySelector(t.getAttribute('href'));if(s)marks.push({el:s,g:t.dataset.g,chip:null})});
+  grps.forEach(function(g){[].slice.call(g.querySelectorAll('a')).forEach(function(a){var c=document.querySelector(a.getAttribute('href'));if(c)marks.push({el:c,g:g.id,chip:a})})});
+  marks.sort(function(x,y){return x.el.compareDocumentPosition(y.el)&Node.DOCUMENT_POSITION_FOLLOWING?-1:1});
+
+  var curG=null, curChip=null;
+  function showGroup(id){
+    if(id===curG)return;curG=id;
+    grps.forEach(function(g){g.classList.toggle('off',g.id!==id)});
+    tabs.forEach(function(t){var on=t.dataset.g===id;t.classList.toggle('on',on);if(on)t.setAttribute('aria-current','true');else t.removeAttribute('aria-current')});
+    chips.scrollLeft=0;
+  }
+  function center(a){
+    var c=chips.getBoundingClientRect(), r=a.getBoundingClientRect();
+    if(r.left<c.left+4||r.right>c.right-4){chips.scrollLeft+=(r.left-c.left)-(c.width-r.width)/2}
+  }
+  function tick(){
+    var thr=navh+40, hit=null;
+    for(var i=0;i<marks.length;i++){if(marks[i].el.getBoundingClientRect().top<=thr)hit=marks[i];else break}
+    showGroup(hit?hit.g:'g1');
+    var chip=hit?hit.chip:null;
+    if(chip!==curChip){if(curChip)curChip.classList.remove('on');curChip=chip;if(chip){chip.classList.add('on');center(chip)}}
+    totop.classList.toggle('show',window.scrollY>600);
+  }
+  var queued=false;
+  window.addEventListener('scroll',function(){if(!queued){queued=true;requestAnimationFrame(function(){queued=false;tick()})}},{passive:true});
+  /* タブを押したら、移動を待たずにその番号の列に切り替える */
+  tabs.forEach(function(t){t.addEventListener('click',function(){showGroup(t.dataset.g)})});
+  document.querySelectorAll('details').forEach(function(d){d.addEventListener('toggle',tick)});
+  tick();
+})();
 </script>
 </body>
 </html>
