@@ -63,6 +63,18 @@ html{scroll-padding-top:var(--navh,112px)}
 .totop{position:fixed;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:21;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--acc);border-radius:50%;background:var(--paper);color:var(--acc);font:700 1rem var(--f-body);padding:0;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.12);opacity:0;pointer-events:none;transition:opacity .2s}
 .totop.show{opacity:1;pointer-events:auto}
 @media (prefers-reduced-motion: reduce){.totop{transition:none}}
+.ws-lead{margin:0;font-size:.9rem;color:var(--sub)}
+.ws{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.wsi{display:flex;flex-direction:column;gap:6px;padding:10px 0;border-bottom:1px solid var(--line)}
+.wsi label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;line-height:1.5}
+.wsi input[type=checkbox]{width:1.25em;height:1.25em;margin:.15em 0 0;accent-color:var(--acc);flex:0 0 auto}
+.wsi input[type=text],.wsi textarea{width:100%;font:inherit;font-size:.92rem;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px}
+.wsi textarea{resize:vertical;min-height:3.2em}
+.js .wsi .state{display:none}
+.js .wsi.on .state{display:block}
+.wsi.on label span{font-weight:700}
+.ws-count{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
+.ws-count.ok{color:var(--acc)}
 </style>
 </head>
 <body id="top">
@@ -77,7 +89,7 @@ html{scroll-padding-top:var(--navh,112px)}
 </div>
 <nav class="jump" id="jump" aria-label="ページ内の移動">
 <div class="tabs"><a href="#day1" data-g="g1">Day1</a><a href="#day2" data-g="g2">Day2</a><a href="#tr" data-g="g3">書き起こし</a><a href="#sk" data-g="g4">ひな形</a></div>
-<div class="chips" id="chips"><div class="grp" id="g1"><a href="#p1">1</a><a href="#p2">2</a><a href="#p3">3</a><a href="#p4">4</a><a href="#p5">5</a><a href="#p6">6</a><a href="#p7">7</a><a href="#p8">8</a><a href="#p9">9</a><a href="#p10">10</a><a href="#p11">11</a><a href="#p11-2">11-2</a><a href="#p12">12</a></div><div class="grp" id="g2"><a href="#p13">13</a><a href="#p13-2">13-2</a><a href="#p14">14</a><a href="#p15">15</a><a href="#p15-2">15-2</a><a href="#p15-3">15-3</a><a href="#p16">16</a><a href="#p16-2">16-2</a><a href="#p17">17</a><a href="#p17-2">17-2</a><a href="#p17-3">17-3</a><a href="#p17-4">17-4</a><a href="#p18">18</a><a href="#p19">19</a></div><div class="grp" id="g3"><a href="#trA">A</a><a href="#trB">B</a><a href="#trC">C</a><a href="#trD">D</a><a href="#trE">E</a><a href="#trF">F</a></div><div class="grp" id="g4"><a href="#skA">ひな形A</a><a href="#skB">ひな形B</a></div></div>
+<div class="chips" id="chips"><div class="grp" id="g1"><a href="#p1">1</a><a href="#p2">2</a><a href="#p3">3</a><a href="#p4">4</a><a href="#p5">5</a><a href="#p6">6</a><a href="#p7">7</a><a href="#p8">8</a><a href="#p9">9</a><a href="#p10">10</a><a href="#p11">11</a><a href="#p11-2">11-2</a><a href="#p12">12</a></div><div class="grp" id="g2"><a href="#p13">13</a><a href="#p13-2">13-2</a><a href="#p14">14</a><a href="#p15">15</a><a href="#p15-2">15-2</a><a href="#p15-3">15-3</a><a href="#p16">16</a><a href="#p16-2">16-2</a><a href="#p17">17</a><a href="#p17-2">17-2</a><a href="#p17-3">17-3</a><a href="#p17-4">17-4</a><a href="#p18">18</a><a href="#p19">19</a></div><div class="grp" id="g3"><a href="#trA">A</a><a href="#trB">B</a><a href="#trC">C</a><a href="#trD">D</a><a href="#trE">E</a><a href="#trF">F</a></div><div class="grp" id="g4"><a href="#skA">ひな形A</a><a href="#ws1">ワークシート①</a><a href="#skB">ひな形B</a></div></div>
 </nav>
 <section id="day1"><h2><span class="eyebrow">Day1</span>1コマ目</h2>
 <article class="card" id="p1">
@@ -1641,6 +1653,7 @@ description: 商談や作業の書き起こしから、オーアンドケーの�
 ビズリブに写しやすいように、「項目名：内容」の形で上から順に並べる。最初の行に「今日のひとこと要約」を1行で書く。</pre></details>
 <button type="button" class="copy sub" data-target="keigyo-nippo-renshu">SKILL.md の中身をコピーする</button>
 <p class="rel">登録したあとに使うプロンプト：<a href="#p16">No.16</a><a href="#p16-2">No.16-2</a></p></article>
+<article class="card" id="ws1"><div class="head"><span class="no">ワークシート①</span></div><h3>採点の観点を選ぶ（Day2 3コマ目　演習3-1・3-2）</h3><p class="ws-lead">テキスト巻末のワークシート①と同じ内容です。候補から10個選び、それぞれ「10点の状態」を書きます。書いた内容はこの端末のブラウザにだけ残り、ほかの人には見えません。</p><div class="ws" id="ws"><div class="wsi" data-i="0"><label><input type="checkbox"><span>訪問前に、お客様のことを調べて準備できていたか</span></label><textarea class="state" rows="2" placeholder="10点の状態を、具体的な行動で（例：困りごとを3つ以上、具体的に聞けている）"></textarea></div><div class="wsi" data-i="1"><label><input type="checkbox"><span>お客様の困りごとを聞き出せたか</span></label><textarea class="state" rows="2" placeholder="10点の状態を、具体的な行動で（例：困りごとを3つ以上、具体的に聞けている）"></textarea></div><div class="wsi" data-i="2"><label><input type="checkbox"><span>お客様の話をさえぎらずに聞けたか</span></label><textarea class="state" rows="2" placeholder="10点の状態を、具体的な行動で（例：困りごとを3つ以上、具体的に聞けている）"></textarea></div><div class="wsi" data-i="3"><label><input type="checkbox"><span>提案が、お客様の困りごとに合っていたか</span></label><textarea class="state" rows="2" placeholder="10点の状態を、具体的な行動で（例：困りごとを3つ以上、具体的に聞けている）"></textarea></div><div class="wsi" data-i="4"><label><input type="checkbox"><span>数字や根拠を示して説明できたか</span></label><textarea class="state" rows="2" placeholder="10点の状態を、具体的な行動で（例：困りごとを3つ以上、具体的に聞けている）"></textarea></div><div class="wsi" data-i="5"><label><input type="checkbox"><span>答えられない質問に、正直に対応できたか</span></label><textarea class="state" rows="2" placeholder="10点の状態を、具体的な行動で（例：困りごとを3つ以上、具体的に聞けている）"></textarea></div><div class="wsi" data-i="6"><label><input type="checkbox"><span>予算を確認できたか</span></label><textarea class="state" rows="2" placeholder="10点の状態を、具体的な行動で（例：困りごとを3つ以上、具体的に聞けている）"></textarea></div><div class="wsi" data-i="7"><label><input type="checkbox"><span>決める人と、決めるまでの流れを確認できたか</span></label><textarea class="state" rows="2" placeholder="10点の状態を、具体的な行動で（例：困りごとを3つ以上、具体的に聞けている）"></textarea></div><div class="wsi" data-i="8"><label><input type="checkbox"><span>次の約束（日付と内容）を決められたか</span></label><textarea class="state" rows="2" placeholder="10点の状態を、具体的な行動で（例：困りごとを3つ以上、具体的に聞けている）"></textarea></div><div class="wsi" data-i="9"><label><input type="checkbox"><span>話が横道にそれすぎなかったか</span></label><textarea class="state" rows="2" placeholder="10点の状態を、具体的な行動で（例：困りごとを3つ以上、具体的に聞けている）"></textarea></div><div class="wsi" data-i="10"><label><input type="checkbox"><span>専門用語を使いすぎず、分かりやすく話せたか</span></label><textarea class="state" rows="2" placeholder="10点の状態を、具体的な行動で（例：困りごとを3つ以上、具体的に聞けている）"></textarea></div><div class="wsi" data-i="11"><label><input type="checkbox"><span>録音することを、お客様に配慮して伝えられたか</span></label><textarea class="state" rows="2" placeholder="10点の状態を、具体的な行動で（例：困りごとを3つ以上、具体的に聞けている）"></textarea></div><div class="wsi" data-i="12"><label><input type="checkbox"><span>最後に、話した内容をまとめて確認できたか</span></label><textarea class="state" rows="2" placeholder="10点の状態を、具体的な行動で（例：困りごとを3つ以上、具体的に聞けている）"></textarea></div><div class="wsi own" data-i="13"><label><input type="checkbox"><span>自分で追加する観点</span></label><input type="text" class="state own-name" placeholder="観点（例：作業の段取りを分かりやすく伝えられたか）"><textarea class="state" rows="2" placeholder="10点の状態を、具体的な行動で（例：困りごとを3つ以上、具体的に聞けている）"></textarea></div><div class="wsi own" data-i="14"><label><input type="checkbox"><span>自分で追加する観点</span></label><input type="text" class="state own-name" placeholder="観点（例：作業の段取りを分かりやすく伝えられたか）"><textarea class="state" rows="2" placeholder="10点の状態を、具体的な行動で（例：困りごとを3つ以上、具体的に聞けている）"></textarea></div></div><p class="ws-count" id="ws-count" aria-live="polite">選んだ数：0 / 10</p><button type="button" class="copy" id="ws-copy">ひな形Bの観点の表としてコピーする</button><button type="button" class="copy sub" id="ws-zip">この観点を入れたひな形B（ZIP）をダウンロード</button><p class="rel">コピーした表は、SKILL.md の「## 2. 採点の観点」の表と入れ替えて保存します（演習3-2）。時間が足りないときは、ZIPをそのまま「カスタマイズ」→「スキル」からアップロードできます。</p><p class="rel">書き方の例：「ヒアリングがよくできている」ではなく「お客様の困りごとを3つ以上、具体的に聞けている」</p><p class="rel">このあと使うもの：<a href="#skB">ひな形B</a><a href="#p17">No.17</a></p></article>
 <article class="card" id="skB"><div class="head"><span class="no">ひな形B</span></div><h3>ひな形B　商談採点（3コマ目）</h3>
 <a class="dl" href="downloads/shodan-saiten-renshu.zip" download>ZIPファイルをダウンロード</a>
 <details><summary>SKILL.md の中身を表示する</summary><pre id="kshodan-saiten-renshu">---
@@ -1690,7 +1703,7 @@ description: 商談の書き起こしや商談の記録を、決めた10の観�
 - 担当者ごとの平均や順位はつけない（集計は人がExcelで行う）
 - 採点の対象外の件は、表に「対象外」と理由を書く</pre></details>
 <button type="button" class="copy sub" data-target="kshodan-saiten-renshu">SKILL.md の中身をコピーする</button>
-<p class="rel">登録したあとに使うプロンプト：<a href="#p17">No.17</a><a href="#p17-2">No.17-2</a></p></article>
+<p class="rel">登録したあとに使うプロンプト：<a href="#p17">No.17</a><a href="#p17-2">No.17-2</a></p><p class="rel">観点の表は<a href="#ws1">ワークシート①</a>で作れます</p></article>
 <p class="note">ZIPを展開し、SKILL.md を書き換えたら、フォルダごとZIPにして「カスタマイズ」→「スキル」からアップロードします（テキストDay2 2コマ目）。</p></section>
 <footer>題材はすべて架空のデータです。実在のお客様の個人の情報は、AIに入れる前に自分で伏せてください。<br>がだんだん株式会社</footer>
 </div>
@@ -1698,7 +1711,7 @@ description: 商談の書き起こしや商談の記録を、決めた10の観�
 <script>
 (function(){
   /* コピー（押したボタンの元の文言に戻す） */
-  document.querySelectorAll('.copy').forEach(function(b){
+  document.querySelectorAll('.copy[data-target]').forEach(function(b){
     var label=b.textContent;
     b.addEventListener('click',function(){
       var el=document.getElementById(b.dataset.target), text=el.textContent;
@@ -1707,6 +1720,66 @@ description: 商談の書き起こしや商談の記録を、決めた10の観�
       if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok,fallback)}else{fallback()}
     });
   });
+
+  /* ワークシート①：選んだ観点をひな形Bの表にする */
+  (function(){
+    var ws=document.getElementById('ws'); if(!ws)return;
+    var rows=[].slice.call(ws.querySelectorAll('.wsi')), count=document.getElementById('ws-count');
+    var bCopy=document.getElementById('ws-copy'), bZip=document.getElementById('ws-zip'), KEY='oandk-ws1';
+    function q(r,s){return r.querySelector(s)}
+    function save(){try{localStorage.setItem(KEY,JSON.stringify(rows.map(function(r){var n=q(r,'.own-name');return {c:q(r,'input[type=checkbox]').checked,t:q(r,'textarea').value,n:n?n.value:''}})))}catch(e){}}
+    function load(){try{var d=JSON.parse(localStorage.getItem(KEY)||'null');if(!d)return;rows.forEach(function(r,i){var v=d[i];if(!v)return;q(r,'input[type=checkbox]').checked=!!v.c;q(r,'textarea').value=v.t||'';var n=q(r,'.own-name');if(n)n.value=v.n||''})}catch(e){}}
+    function cell(s){return s.replace(/\s+/g,' ').replace(/\|/g,'／').trim()}
+    function picked(){return rows.filter(function(r){return q(r,'input[type=checkbox]').checked}).map(function(r){var n=q(r,'.own-name');var name=n?n.value:q(r,'label span').textContent;return {name:cell(name)||'【 】',state:cell(q(r,'textarea').value)||'【 】'}})}
+    function refresh(){
+      rows.forEach(function(r){r.classList.toggle('on',q(r,'input[type=checkbox]').checked)});
+      var p=picked(), blank=p.filter(function(x){return x.state==='【 】'||x.name==='【 】'}).length;
+      count.textContent='選んだ数：'+p.length+' / 10'+(p.length>10?'（'+(p.length-10)+'個多いです）':'')+(blank?'　空欄：'+blank+'か所':'');
+      count.classList.toggle('ok',p.length===10&&!blank);
+    }
+    function table(){var p=picked();return '| No. | 観点 | 10点の状態 |\n|---|---|---|\n'+p.map(function(x,i){return '| '+(i+1)+' | '+x.name+' | '+x.state+' |'}).join('\n')}
+    function flash(b,msg){var t=b.dataset.label||(b.dataset.label=b.textContent);b.textContent=msg;setTimeout(function(){b.textContent=t},2500)}
+    function check(b){var n=picked().length;if(n!==10){flash(b,n<10?'あと'+(10-n)+'個選んでください':(n-10)+'個多いです。10個にしてください');return false}return true}
+    bCopy.addEventListener('click',function(){
+      if(!check(bCopy))return; var text=table();
+      function ok(){bCopy.classList.add('done');flash(bCopy,'コピーしました');setTimeout(function(){bCopy.classList.remove('done')},2500)}
+      function fallback(){var pre=document.createElement('pre');pre.textContent=text;bCopy.insertAdjacentElement('afterend',pre);var r=document.createRange();r.selectNodeContents(pre);var s=window.getSelection();s.removeAllRanges();s.addRange(r);flash(bCopy,'下の表を選択しました。長押しでコピー')}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok,fallback)}else{fallback()}
+    });
+    /* 圧縮しないZIPを作る（外部のライブラリは使わない） */
+    var CRC=(function(){var t=[],c,n,k;for(n=0;n<256;n++){c=n;for(k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t.push(c>>>0)}return t})();
+    function crc32(u){var c=0xFFFFFFFF;for(var i=0;i<u.length;i++)c=CRC[(c^u[i])&255]^(c>>>8);return (c^0xFFFFFFFF)>>>0}
+    function zip(files){
+      var enc=new TextEncoder(), parts=[], central=[], off=0, now=new Date();
+      var time=(now.getHours()<<11)|(now.getMinutes()<<5)|(now.getSeconds()>>1), date=((now.getFullYear()-1980)<<9)|((now.getMonth()+1)<<5)|now.getDate();
+      files.forEach(function(f){
+        var name=enc.encode(f.name), data=f.data?enc.encode(f.data):new Uint8Array(0), crc=crc32(data), dir=!f.data;
+        var h=new DataView(new ArrayBuffer(30));
+        h.setUint32(0,0x04034b50,true);h.setUint16(4,20,true);h.setUint16(6,0x0800,true);h.setUint16(8,0,true);h.setUint16(10,time,true);h.setUint16(12,date,true);
+        h.setUint32(14,crc,true);h.setUint32(18,data.length,true);h.setUint32(22,data.length,true);h.setUint16(26,name.length,true);h.setUint16(28,0,true);
+        var c=new DataView(new ArrayBuffer(46));
+        c.setUint32(0,0x02014b50,true);c.setUint16(4,20,true);c.setUint16(6,20,true);c.setUint16(8,0x0800,true);c.setUint16(10,0,true);c.setUint16(12,time,true);c.setUint16(14,date,true);
+        c.setUint32(16,crc,true);c.setUint32(20,data.length,true);c.setUint32(24,data.length,true);c.setUint16(28,name.length,true);c.setUint16(30,0,true);c.setUint16(32,0,true);
+        c.setUint16(34,0,true);c.setUint16(36,0,true);c.setUint32(38,dir?0x10:0,true);c.setUint32(42,off,true);
+        parts.push(h.buffer,name,data);central.push(c.buffer,name);off+=30+name.length+data.length;
+      });
+      var cdSize=central.reduce(function(s,p){return s+(p.byteLength)},0), end=new DataView(new ArrayBuffer(22));
+      end.setUint32(0,0x06054b50,true);end.setUint16(8,files.length,true);end.setUint16(10,files.length,true);end.setUint32(12,cdSize,true);end.setUint32(16,off,true);
+      return new Blob(parts.concat(central,[end.buffer]),{type:'application/zip'});
+    }
+    bZip.addEventListener('click',function(){
+      if(!check(bZip))return;
+      var src=(document.getElementById('kshodan-saiten-renshu')||{}).textContent||'', a=src.indexOf('| No. | 観点 | 10点の状態 |'), b=src.indexOf('\n\n## 3.');
+      if(a<0||b<a){flash(bZip,'うまく作れませんでした。コピーの方法を使ってください');return}
+      var md=(src.slice(0,a)+table()+src.slice(b)).replace('【 】の部分を、自分で選んだ観点に書き換えてください。','')+'\n';
+      var blob=zip([{name:'shodan-saiten-renshu/'},{name:'shodan-saiten-renshu/SKILL.md',data:md}]);
+      var link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download='shodan-saiten-renshu.zip';document.body.appendChild(link);link.click();
+      setTimeout(function(){URL.revokeObjectURL(link.href);link.remove()},1000);flash(bZip,'ダウンロードしました');
+    });
+    load();refresh();
+    ws.addEventListener('input',function(){refresh();save()});
+    ws.addEventListener('change',function(){refresh();save()});
+  })();
 
   /* 上に残るナビ */
   var nav=document.getElementById('jump'), chips=document.getElementById('chips'), totop=document.getElementById('totop');
